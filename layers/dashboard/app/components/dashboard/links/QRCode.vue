@@ -17,7 +17,7 @@ const options = {
   margin: 10,
   qrOptions: { typeNumber: 0 as const, mode: 'Byte' as const, errorCorrectionLevel: 'Q' as const },
   imageOptions: { hideBackgroundDots: true, imageSize: 0.4, margin: 2 },
-  dotsOptions: { type: 'dots' as const, color: '#000000' },
+  dotsOptions: { type: 'extra-rounded' as const, color: '#000000' },
   backgroundOptions: { color: '#ffffff' },
   image: props.image,
   dotsOptionsHelper: {
@@ -69,7 +69,7 @@ const qrCodeEl = useTemplateRef<HTMLElement>('qrCodeEl')
 
 function updateColor(newColor: string) {
   qrCode.update({
-    dotsOptions: { type: 'dots' as const, color: newColor },
+    dotsOptions: { type: 'extra-rounded' as const, color: newColor },
     cornersSquareOptions: { type: 'extra-rounded' as const, color: newColor },
     cornersDotOptions: { type: 'dot' as const, color: newColor },
   })
