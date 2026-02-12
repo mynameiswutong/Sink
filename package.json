@@ -10,7 +10,7 @@
   "scripts": {
     "dev": "nuxt dev --port 7465",
     "analyze": "nuxt analyze",
-    "build": "NODE_OPTIONS=--max-old-space-size=8192 nuxt build",
+    "build": "cross-env NODE_OPTIONS=--max-old-space-size=8192 nuxt build",
     "build:map": "node scripts/build-map.js",
     "build:colo": "node scripts/build-colo.js",
     "build:testimonials": "node scripts/build-testimonials.js",
@@ -25,7 +25,8 @@
     "deploy:worker": "wrangler deploy .output/server/index.mjs --assets .output/public",
     "preview": "wrangler dev .output/server/index.mjs --assets .output/public ",
     "postinstall": "npm run build:map && nuxt prepare",
-    "prepare": "simple-git-hooks"
+    "prepare": "simple-git-hooks",
+    "clean": "node scripts/clean.mjs"
   },
   "dependencies": {
     "@intlify/message-compiler": "^11.2.8",
