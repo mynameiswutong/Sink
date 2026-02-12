@@ -34,9 +34,10 @@ export function generateCloakingHtml(link: Link, targetUrl: string, baseUrl: str
 <html>
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>${escape(title)}</title>
     ${tags}
-    <style>body{margin:0;overflow:hidden}iframe{width:100%;height:100%;border:none}</style>
+    <style>body{margin:0;overflow:hidden}iframe{width:100vh;height:100vh;border:none}</style>
 </head>
 <body>
     <iframe src="${escape(targetUrl)}" sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox" allowfullscreen referrerpolicy="no-referrer"></iframe>
