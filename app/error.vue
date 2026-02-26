@@ -1,5 +1,10 @@
 <script setup lang="ts">
 import errorImage from './assets/images/404.svg?raw'
+
+// 加载时，弹出Alert
+onMounted(() => {
+  console.error('页面不存在')
+})
 </script>
 
 <template>

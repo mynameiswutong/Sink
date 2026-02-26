@@ -40,11 +40,9 @@ async function deleteLink() {
     >
       <AlertDialogHeader>
         <AlertDialogTitle>
-          {{
-            $t("links.delete_confirm_title")
-          }}
+          {{ $t("links.delete_confirm_title") }}
         </AlertDialogTitle>
-        <AlertDialogDescription class="text-red-500">
+        <AlertDialogDescription class="text-red-600">
           {{ $t("links.delete_confirm_desc") }}
         </AlertDialogDescription>
       </AlertDialogHeader>

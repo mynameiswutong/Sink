@@ -77,27 +77,6 @@ function copyLink() {
               <div class="truncate leading-5 font-bold">
                 {{ link.slug }}
               </div>
-
-              <Button
-                v-if="copied"
-                variant="ghost"
-                size="icon"
-                class="ml-1 h-auto w-auto p-0"
-                aria-label="Link copied"
-                @click.prevent
-              >
-                <CopyCheck class="h-4 w-4 shrink-0" />
-              </Button>
-              <Button
-                v-else
-                variant="ghost"
-                size="icon"
-                class="ml-1 h-auto w-auto p-0"
-                aria-label="Copy link"
-                @click.prevent="copyLink"
-              >
-                <Copy class="h-4 w-4 shrink-0" />
-              </Button>
             </div>
 
             <TooltipProvider>
@@ -113,6 +92,27 @@ function copyLink() {
               </Tooltip>
             </TooltipProvider>
           </div>
+
+          <Button
+            v-if="copied"
+            variant="ghost"
+            size="icon"
+            class="ml-1 h-auto w-auto p-0"
+            aria-label="Link copied"
+            @click.prevent
+          >
+            <CopyCheck class="h-5 w-5 shrink-0" />
+          </Button>
+          <Button
+            v-else
+            variant="ghost"
+            size="icon"
+            class="ml-1 h-auto w-auto p-0"
+            aria-label="Copy link"
+            @click.prevent="copyLink"
+          >
+            <Copy class="h-5 w-5 shrink-0" />
+          </Button>
 
           <a
             :href="link.url"
