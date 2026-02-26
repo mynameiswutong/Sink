@@ -1,8 +1,13 @@
 <script setup lang="ts">
-import { ArrowUpCircle, Coffee, Languages, Laptop, Moon, Sun } from 'lucide-vue-next'
+import {
+  ArrowUpCircle,
+  Languages,
+  Laptop,
+  Moon,
+  Sun,
+} from 'lucide-vue-next'
 import { useSidebar } from '@/components/ui/sidebar'
 
-const { coffee } = useAppConfig()
 const colorMode = useColorMode()
 const { setLocale, locales } = useI18n()
 const { state } = useSidebar()
@@ -15,35 +20,14 @@ const { hasUpdate, currentVersion, latestVersion } = useVersionCheck()
       <SidebarMenu>
         <SidebarMenuItem>
           <div
-            class="flex w-full p-1.5 pr-0" :class="[
+            class="flex w-full p-1.5 pr-0"
+            :class="[
               state === 'collapsed'
                 ? 'flex-col items-center gap-2'
                 : 'items-center justify-between',
             ]"
           >
             <div class="flex items-center">
-              <TooltipProvider>
-                <Tooltip :delay-duration="100">
-                  <TooltipTrigger as-child>
-                    <a
-                      :href="coffee"
-                      target="_blank"
-                      :title="$t('sidebar.coffee')"
-                      class="
-                        flex h-8 items-center justify-center rounded-md px-2
-                        hover:bg-sidebar-accent
-                        hover:text-sidebar-accent-foreground
-                      "
-                    >
-                      <Coffee class="size-4" />
-                    </a>
-                  </TooltipTrigger>
-                  <TooltipContent :side="state === 'collapsed' ? 'right' : 'top'">
-                    <p>{{ $t('sidebar.coffee') }}</p>
-                  </TooltipContent>
-                </Tooltip>
-              </TooltipProvider>
-
               <TooltipProvider v-if="hasUpdate">
                 <Tooltip :delay-duration="100">
                   <TooltipTrigger as-child>
@@ -66,16 +50,28 @@ const { hasUpdate, currentVersion, latestVersion } = useVersionCheck()
                       />
                     </a>
                   </TooltipTrigger>
-                  <TooltipContent :side="state === 'collapsed' ? 'right' : 'top'">
-                    <p>{{ $t('sidebar.update', { current: currentVersion, version: latestVersion }) }}</p>
+                  <TooltipContent
+                    :side="state === 'collapsed' ? 'right' : 'top'"
+                  >
+                    <p>
+                      {{
+                        $t("sidebar.update", {
+                          current: currentVersion,
+                          version: latestVersion,
+                        })
+                      }}
+                    </p>
                   </TooltipContent>
                 </Tooltip>
               </TooltipProvider>
             </div>
 
             <div
-              class="flex gap-1" :class="[
-                state === 'collapsed' ? 'flex-col items-center' : 'items-center',
+              class="flex gap-1"
+              :class="[
+                state === 'collapsed'
+                  ? 'flex-col items-center'
+                  : 'items-center',
               ]"
             >
               <DropdownMenu>
@@ -140,21 +136,21 @@ const { hasUpdate, currentVersion, latestVersion } = useVersionCheck()
                     @click="colorMode.preference = 'light'"
                   >
                     <Sun class="mr-1 h-4 w-4" />
-                    {{ $t('theme.light') }}
+                    {{ $t("theme.light") }}
                   </DropdownMenuItem>
                   <DropdownMenuItem
                     class="cursor-pointer"
                     @click="colorMode.preference = 'dark'"
                   >
                     <Moon class="mr-1 h-4 w-4" />
-                    {{ $t('theme.dark') }}
+                    {{ $t("theme.dark") }}
                   </DropdownMenuItem>
                   <DropdownMenuItem
                     class="cursor-pointer"
                     @click="colorMode.preference = 'system'"
                   >
                     <Laptop class="mr-1 h-4 w-4" />
-                    {{ $t('theme.system') }}
+                    {{ $t("theme.system") }}
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>

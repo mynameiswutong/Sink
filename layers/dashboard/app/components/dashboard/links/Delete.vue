@@ -39,15 +39,19 @@ async function deleteLink() {
       "
     >
       <AlertDialogHeader>
-        <AlertDialogTitle>{{ $t('links.delete_confirm_title') }}</AlertDialogTitle>
-        <AlertDialogDescription>
-          {{ $t('links.delete_confirm_desc') }}
+        <AlertDialogTitle>
+          {{
+            $t("links.delete_confirm_title")
+          }}
+        </AlertDialogTitle>
+        <AlertDialogDescription class="text-red-500">
+          {{ $t("links.delete_confirm_desc") }}
         </AlertDialogDescription>
       </AlertDialogHeader>
       <AlertDialogFooter>
-        <AlertDialogCancel>{{ $t('common.cancel') }}</AlertDialogCancel>
-        <AlertDialogAction @click="deleteLink">
-          {{ $t('common.continue') }}
+        <AlertDialogCancel>{{ $t("common.cancel") }}</AlertDialogCancel>
+        <AlertDialogAction class="bg-red-500 text-white" @click="deleteLink">
+          {{ $t("common.continue") }}
         </AlertDialogAction>
       </AlertDialogFooter>
     </AlertDialogContent>

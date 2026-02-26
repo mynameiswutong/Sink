@@ -1,7 +1,20 @@
 <script setup lang="ts">
 import type { CounterData, Link } from '@/types'
 import { useClipboard } from '@vueuse/core'
-import { CalendarPlus2, Copy, CopyCheck, Eraser, Flame, Hourglass, Link as LinkIcon, MousePointerClick, QrCode, SquareChevronDown, SquarePen, Users } from 'lucide-vue-next'
+import {
+  CalendarPlus2,
+  Copy,
+  CopyCheck,
+  Eraser,
+  Flame,
+  Hourglass,
+  Link as LinkIcon,
+  MousePointerClick,
+  QrCode,
+  SquareChevronDown,
+  SquarePen,
+  Users,
+} from 'lucide-vue-next'
 import { parseURL } from 'ufo'
 import { toast } from 'vue-sonner'
 
@@ -12,11 +25,14 @@ const props = defineProps<{
 const { t } = useI18n()
 const editPopoverOpen = ref(false)
 
-const countersMap = inject<Ref<Record<string, CounterData>> | undefined>('linksCountersMap', undefined)
+const countersMap = inject<Ref<Record<string, CounterData>> | undefined>(
+  'linksCountersMap',
+  undefined,
+)
 const counters = computed(() => countersMap?.value?.[props.link.id])
 
 const requestUrl = useRequestURL()
-const host = requestUrl.host
+// const host = requestUrl.host;
 const origin = requestUrl.origin
 
 function getLinkHost(url: string): string | undefined {
@@ -25,9 +41,15 @@ function getLinkHost(url: string): string | undefined {
 }
 
 const shortLink = computed(() => `${origin}/${props.link.slug}`)
-const linkIcon = computed(() => `https://unavatar.webp.se/${getLinkHost(props.link.url)}?fallback=https://sink.cool/icon.png`)
+const linkIcon = computed(
+  () =>
+    `https://unavatar.webp.se/${getLinkHost(props.link.url)}?fallback=https://sink.cool/icon.png`,
+)
 
-const { copy, copied } = useClipboard({ source: shortLink.value, copiedDuring: 400 })
+const { copy, copied } = useClipboard({
+  source: shortLink.value,
+  copiedDuring: 400,
+})
 
 function copyLink() {
   copy(shortLink.value)
@@ -44,24 +66,16 @@ function copyLink() {
       >
         <div class="flex items-center justify-center space-x-3">
           <Avatar>
-            <AvatarImage
-              :src="linkIcon"
-              :alt="link.slug"
-              loading="lazy"
-            />
+            <AvatarImage :src="linkIcon" :alt="link.slug" loading="lazy" />
             <AvatarFallback>
-              <img
-                src="/icon.png"
-                :alt="link.slug"
-                loading="lazy"
-              >
+              <img src="/icon.png" :alt="link.slug" loading="lazy">
             </AvatarFallback>
           </Avatar>
 
           <div class="flex-1 overflow-hidden">
             <div class="flex items-center">
               <div class="truncate leading-5 font-bold">
-                {{ host }}/{{ link.slug }}
+                {{ link.slug }}
               </div>
 
               <Button
@@ -112,33 +126,19 @@ function copyLink() {
 
           <Popover>
             <PopoverTrigger aria-label="Show QR code">
-              <QrCode
-                class="h-5 w-5"
-                @click.prevent
-              />
+              <QrCode class="h-5 w-5" @click.prevent />
             </PopoverTrigger>
             <PopoverContent>
-              <DashboardLinksQRCode
-                :data="shortLink"
-                :image="linkIcon"
-              />
+              <DashboardLinksQRCode :data="shortLink" :image="linkIcon" />
             </PopoverContent>
           </Popover>
 
           <Popover v-model:open="editPopoverOpen">
             <PopoverTrigger aria-label="More actions">
-              <SquareChevronDown
-                class="h-5 w-5"
-                @click.prevent
-              />
+              <SquareChevronDown class="h-5 w-5" @click.prevent />
             </PopoverTrigger>
-            <PopoverContent
-              class="w-auto p-0"
-              :hide-when-detached="false"
-            >
-              <DashboardLinksEditor
-                :link="link"
-              >
+            <PopoverContent class="w-auto p-0" :hide-when-detached="false">
+              <DashboardLinksEditor :link="link">
                 <div
                   class="
                     flex cursor-pointer items-center rounded-sm px-2 py-1.5
@@ -146,30 +146,26 @@ function copyLink() {
                     hover:bg-accent hover:text-accent-foreground
                   "
                 >
-                  <SquarePen
-                    aria-hidden="true"
-                    class="mr-2 h-5 w-5"
-                  />
-                  {{ $t('common.edit') }}
+                  <SquarePen aria-hidden="true" class="mr-2 h-5 w-5" />
+                  {{ $t("common.edit") }}
                 </div>
               </DashboardLinksEditor>
 
               <Separator />
 
-              <DashboardLinksDelete
-                :link="link"
-              >
+              <DashboardLinksDelete :link="link">
                 <div
                   class="
                     flex cursor-pointer items-center rounded-sm px-2 py-1.5
-                    text-sm outline-hidden select-none
+                    text-sm text-red-500 outline-hidden select-none
                     hover:bg-accent hover:text-accent-foreground
                   "
                 >
                   <Eraser
                     aria-hidden="true"
-                    class="mr-2 h-5 w-5"
-                  /> {{ $t('common.delete') }}
+                    class="mr-2 h-5 w-5 text-red-500"
+                  />
+                  {{ $t("common.delete") }}
                 </div>
               </DashboardLinksDelete>
             </PopoverContent>
@@ -182,11 +178,16 @@ function copyLink() {
                 <TooltipTrigger as-child>
                   <span
                     class="inline-flex items-center leading-5 whitespace-nowrap"
-                  ><CalendarPlus2 aria-hidden="true" class="mr-1 h-4 w-4" /> {{ shortDate(link.createdAt) }}</span>
+                  ><CalendarPlus2 aria-hidden="true" class="mr-1 h-4 w-4" />
+                    {{ shortDate(link.createdAt) }}</span>
                 </TooltipTrigger>
                 <TooltipContent>
-                  <p>{{ $t('links.created_at') }}: {{ longDate(link.createdAt) }}</p>
-                  <p>{{ $t('links.updated_at') }}: {{ longDate(link.updatedAt) }}</p>
+                  <p>
+                    {{ $t("links.created_at") }}: {{ longDate(link.createdAt) }}
+                  </p>
+                  <p>
+                    {{ $t("links.updated_at") }}: {{ longDate(link.updatedAt) }}
+                  </p>
                 </TooltipContent>
               </Tooltip>
             </TooltipProvider>
@@ -199,10 +200,14 @@ function copyLink() {
                       class="
                         inline-flex items-center leading-5 whitespace-nowrap
                       "
-                    ><Hourglass aria-hidden="true" class="mr-1 h-4 w-4" /> {{ shortDate(link.expiration) }}</span>
+                    ><Hourglass aria-hidden="true" class="mr-1 h-4 w-4" />
+                      {{ shortDate(link.expiration) }}</span>
                   </TooltipTrigger>
                   <TooltipContent>
-                    <p>{{ $t('links.expires_at') }}: {{ longDate(link.expiration) }}</p>
+                    <p>
+                      {{ $t("links.expires_at") }}:
+                      {{ longDate(link.expiration) }}
+                    </p>
                   </TooltipContent>
                 </Tooltip>
               </TooltipProvider>
@@ -210,9 +215,7 @@ function copyLink() {
             <Separator orientation="vertical" />
             <span class="truncate">{{ link.url }}</span>
           </div>
-          <div
-            v-if="countersMap" class="flex h-5 w-full space-x-2 text-sm"
-          >
+          <div v-if="countersMap" class="flex h-5 w-full space-x-2 text-sm">
             <template v-if="counters">
               <Badge variant="secondary">
                 <MousePointerClick aria-hidden="true" class="h-3.5 w-3.5" />
