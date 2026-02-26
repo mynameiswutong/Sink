@@ -24,7 +24,8 @@ async function handleSubmit() {
   }
 
   try {
-    setToken(token.value)
+    const expiresIn = 24 * 60 * 60 // 1 day
+    setToken(token.value, expiresIn)
     await useAPI('/api/verify')
     navigateTo('/dashboard')
   }
@@ -42,10 +43,10 @@ async function handleSubmit() {
   <Card class="w-full max-w-sm">
     <CardHeader>
       <CardTitle class="text-2xl">
-        {{ $t('login.title') }}
+        {{ $t("login.title") }}
       </CardTitle>
       <CardDescription>
-        {{ $t('login.description') }}
+        {{ $t("login.description") }}
       </CardDescription>
     </CardHeader>
     <CardContent class="grid gap-4">
@@ -64,7 +65,7 @@ async function handleSubmit() {
         <FieldGroup>
           <Field :data-invalid="!!error">
             <FieldLabel for="token">
-              {{ $t('login.token_label') }}
+              {{ $t("login.token_label") }}
             </FieldLabel>
             <Input
               id="token"
@@ -81,15 +82,15 @@ async function handleSubmit() {
 
         <Alert v-if="previewMode">
           <AlertCircle class="h-4 w-4" />
-          <AlertTitle>{{ $t('login.tips') }}</AlertTitle>
+          <AlertTitle>{{ $t("login.tips") }}</AlertTitle>
           <AlertDescription>
-            {{ $t('login.preview_token') }}
+            {{ $t("login.preview_token") }}
             <code class="font-mono text-green-500">SinkCool</code>
           </AlertDescription>
         </Alert>
 
         <Button class="w-full" type="submit">
-          {{ $t('login.submit') }}
+          {{ $t("login.submit") }}
         </Button>
       </form>
     </CardContent>

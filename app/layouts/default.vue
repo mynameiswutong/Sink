@@ -1,10 +1,9 @@
 <script setup lang="ts">
-import { Menu, Star, X } from 'lucide-vue-next'
+import { Menu, X } from 'lucide-vue-next'
 import { GitHubIcon, TelegramIcon, XIcon } from 'vue3-simple-icons'
 
 const showMenu = ref(false)
 const { title, telegram, twitter, github } = useAppConfig()
-const { stats } = useGithubStats()
 </script>
 
 <template>
@@ -57,15 +56,15 @@ const { stats } = useGithubStats()
                 @click="showMenu = !showMenu"
               >
                 <Menu
-                  class="m-auto size-6 duration-200" :class="[
-                    showMenu && 'scale-0 rotate-180 opacity-0',
-                  ]"
+                  class="m-auto size-6 duration-200"
+                  :class="[showMenu && 'scale-0 rotate-180 opacity-0']"
                 />
                 <X
-                  class="absolute inset-0 m-auto size-6 duration-200" :class="[
-                    showMenu ? 'scale-100 rotate-0 opacity-100' : `
-                      scale-0 -rotate-180 opacity-0
-                    `,
+                  class="absolute inset-0 m-auto size-6 duration-200"
+                  :class="[
+                    showMenu
+                      ? 'scale-100 rotate-0 opacity-100'
+                      : `scale-0 -rotate-180 opacity-0`,
                   ]"
                 />
               </button>
@@ -81,9 +80,8 @@ const { stats } = useGithubStats()
                 lg:m-0 lg:flex lg:w-fit lg:items-center lg:gap-6 lg:space-y-0
                 lg:border-transparent lg:bg-transparent lg:p-0 lg:shadow-none
                 dark:shadow-none dark:lg:bg-transparent
-              " :class="[
-                showMenu ? 'block' : 'hidden',
-              ]"
+              "
+              :class="[showMenu ? 'block' : 'hidden']"
             >
               <div
                 class="
@@ -92,23 +90,6 @@ const { stats } = useGithubStats()
                   md:w-fit
                 "
               >
-                <Button
-                  as-child
-                  variant="outline"
-                  size="sm"
-                >
-                  <a
-                    :href="github"
-                    target="_blank"
-                    :title="$t('layouts.footer.social.github')"
-                    class="flex items-center gap-1.5"
-                  >
-                    <GitHubIcon class="size-4" />
-                    <Star class="size-3" />
-                    <span class="tabular-nums">{{ stats.stars }}</span>
-                  </a>
-                </Button>
-
                 <SwitchLanguage />
                 <SwitchTheme />
               </div>
@@ -166,7 +147,7 @@ const { stats } = useGithubStats()
                 title="HTML.ZONE"
                 class="hover:text-primary"
               >
-                {{ $t('layouts.footer.copyright') }}
+                {{ $t("layouts.footer.copyright") }}
               </a>
             </small>
           </div>

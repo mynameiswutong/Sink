@@ -8,7 +8,7 @@ export default defineAppConfig({
   image: 'https://sink.cool/banner.png',
   previewTTL: 300, // 5 minutes
   slugRegex: /^[a-z0-9]+(?:-[a-z0-9]+)*$/i,
-  reserveSlug: [
+  reserveSlug: [ // 保留的 slug，不能被用户自定义
     'dashboard',
   ],
 })

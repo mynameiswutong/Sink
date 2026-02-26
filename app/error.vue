@@ -4,13 +4,15 @@ import errorImage from './assets/images/404.svg?raw'
 
 <template>
   <NuxtLayout name="default">
-    <a
-      class="
-        mx-auto flex h-full w-full max-w-[600px] items-center justify-center
-        [&_svg]:w-full
-      "
-      href="/"
-      v-html="errorImage"
-    />
+    <div class="flex min-h-[60vh] items-center justify-center">
+      <a
+        class="
+          mx-auto flex h-full w-full max-w-[600px] items-center justify-center
+          [&_svg]:w-full
+        "
+        href="/"
+        v-html="errorImage"
+      />
+    </div>
   </NuxtLayout>
 </template>
