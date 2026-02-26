@@ -78,19 +78,6 @@ function copyLink() {
                 {{ link.slug }}
               </div>
             </div>
-
-            <TooltipProvider>
-              <Tooltip>
-                <TooltipTrigger as-child>
-                  <p class="truncate text-sm">
-                    {{ link.comment || link.title || link.description }}
-                  </p>
-                </TooltipTrigger>
-                <TooltipContent class="max-w-[90svw] translate-y-10 break-all">
-                  <p>{{ link.comment || link.title || link.description }}</p>
-                </TooltipContent>
-              </Tooltip>
-            </TooltipProvider>
           </div>
 
           <Button
