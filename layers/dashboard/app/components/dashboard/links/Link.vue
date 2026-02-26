@@ -86,7 +86,7 @@ function copyLink() {
                     {{ link.comment || link.title || link.description }}
                   </p>
                 </TooltipTrigger>
-                <TooltipContent class="max-w-[90svw] break-all">
+                <TooltipContent class="max-w-[90svw] translate-y-10 break-all">
                   <p>{{ link.comment || link.title || link.description }}</p>
                 </TooltipContent>
               </Tooltip>
@@ -147,7 +147,7 @@ function copyLink() {
                   "
                 >
                   <SquarePen aria-hidden="true" class="mr-2 h-5 w-5" />
-                  {{ $t("common.edit") }}
+                  {{ $t('common.edit') }}
                 </div>
               </DashboardLinksEditor>
 
@@ -165,7 +165,7 @@ function copyLink() {
                     aria-hidden="true"
                     class="mr-2 h-5 w-5 text-red-500"
                   />
-                  {{ $t("common.delete") }}
+                  {{ $t('common.delete') }}
                 </div>
               </DashboardLinksDelete>
             </PopoverContent>
@@ -183,10 +183,10 @@ function copyLink() {
                 </TooltipTrigger>
                 <TooltipContent>
                   <p>
-                    {{ $t("links.created_at") }}: {{ longDate(link.createdAt) }}
+                    {{ $t('links.created_at') }}: {{ longDate(link.createdAt) }}
                   </p>
                   <p>
-                    {{ $t("links.updated_at") }}: {{ longDate(link.updatedAt) }}
+                    {{ $t('links.updated_at') }}: {{ longDate(link.updatedAt) }}
                   </p>
                 </TooltipContent>
               </Tooltip>
@@ -205,7 +205,7 @@ function copyLink() {
                   </TooltipTrigger>
                   <TooltipContent>
                     <p>
-                      {{ $t("links.expires_at") }}:
+                      {{ $t('links.expires_at') }}:
                       {{ longDate(link.expiration) }}
                     </p>
                   </TooltipContent>

@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { onMounted } from 'vue'
 import errorImage from './assets/images/404.svg?raw'
 
 // 加载时，弹出Alert
