@@ -34,7 +34,10 @@ function getDeviceRedirectUrl(userAgent: string, link: Link): string | null {
     return link.google
   }
 
-  if (link.apple && (ua.includes('iphone') || ua.includes('ipad') || ua.includes('ipod'))) {
+  if (
+    link.apple
+    && (ua.includes('iphone') || ua.includes('ipad') || ua.includes('ipod'))
+  ) {
     return link.apple
   }
 
@@ -48,7 +51,13 @@ function hasOgConfig(link: Link): boolean {
 export default eventHandler(async (event) => {
   const { pathname: slug } = parsePath(event.path.replace(/^\/|\/$/g, ''))
   const { slugRegex, reserveSlug } = useAppConfig()
-  const { homeURL, linkCacheTtl, caseSensitive, redirectWithQuery, redirectStatusCode } = useRuntimeConfig(event)
+  const {
+    homeURL,
+    linkCacheTtl,
+    caseSensitive,
+    redirectWithQuery,
+    redirectStatusCode,
+  } = useRuntimeConfig(event)
   const { cloudflare } = event.context
 
   if (event.path === '/' && homeURL)
@@ -60,14 +69,26 @@ export default eventHandler(async (event) => {
     return
   }
 
-  if (slug && !reserveSlug.includes(slug) && slugRegex.test(slug) && cloudflare) {
+  if (
+    slug
+    && !reserveSlug.includes(slug)
+    && slugRegex.test(slug)
+    && cloudflare
+  ) {
     let link: Link | null = null
 
     const lowerCaseSlug = slug.toLowerCase()
-    link = await getLink(event, caseSensitive ? slug : lowerCaseSlug, linkCacheTtl)
+    link = await getLink(
+      event,
+      caseSensitive ? slug : lowerCaseSlug,
+      linkCacheTtl,
+    )
 
     if (!caseSensitive && !link && lowerCaseSlug !== slug) {
-      console.log('original slug fallback:', `slug:${slug} lowerCaseSlug:${lowerCaseSlug}`)
+      console.log(
+        'original slug fallback:',
+        `slug:${slug} lowerCaseSlug:${lowerCaseSlug}`,
+      )
       link = await getLink(event, slug, linkCacheTtl)
     }
 
@@ -108,8 +129,10 @@ export default eventHandler(async (event) => {
 
       const userAgent = getHeader(event, 'user-agent') || ''
       const query = getQuery(event)
-      const shouldRedirectWithQuery = link.redirectWithQuery ?? redirectWithQuery
-      const buildTarget = (url: string) => shouldRedirectWithQuery ? withQuery(url, query) : url
+      const shouldRedirectWithQuery
+        = link.redirectWithQuery ?? redirectWithQuery
+      const buildTarget = (url: string) =>
+        shouldRedirectWithQuery ? withQuery(url, query) : url
 
       const deviceRedirectUrl = getDeviceRedirectUrl(userAgent, link)
       if (deviceRedirectUrl) {

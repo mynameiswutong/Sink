@@ -4,7 +4,7 @@ import { currentLocales } from './i18n/i18n'
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  extends: ['./layers/dashboard'],
+  extends: ['./layers/dashboard', './layers/404page'],
   modules: [
     '@nuxtjs/color-mode',
     '@nuxtjs/i18n',
@@ -33,7 +33,7 @@ export default defineNuxtConfig({
     listQueryLimit: 500,
     disableBotAccessLog: false,
     disableAutoBackup: false,
-    notFoundRedirect: '',
+    notFoundRedirect: '/404page',
     public: {
       previewMode: '',
       slugDefaultLength: '6',
@@ -78,7 +78,8 @@ export default defineNuxtConfig({
       production: 'runtime',
       meta: {
         title: 'Sink API',
-        description: 'A Simple / Speedy / Secure Link Shortener with Analytics, 100% run on Cloudflare.',
+        description:
+          'A Simple / Speedy / Secure Link Shortener with Analytics, 100% run on Cloudflare.',
       },
       route: '/_docs/openapi.json',
       ui: {
@@ -92,9 +93,7 @@ export default defineNuxtConfig({
     },
   },
   vite: {
-    plugins: [
-      tailwindcss(),
-    ],
+    plugins: [tailwindcss()],
     worker: {
       format: 'es',
     },

@@ -20,7 +20,11 @@ export function buildShortLink(event: H3Event, slug: string): string {
 }
 
 export async function putLink(event: H3Event, link: Link): Promise<void> {
+  // Check if KV is available
   const { cloudflare } = event.context
+  if (!cloudflare?.env?.KV) {
+    return
+  }
   const { KV } = cloudflare.env
   const expiration = getExpiration(event, link.expiration)
 
@@ -34,26 +38,59 @@ export async function putLink(event: H3Event, link: Link): Promise<void> {
   })
 }
 
-export async function getLink(event: H3Event, slug: string, cacheTtl?: number): Promise<Link | null> {
+export async function getLink(
+  event: H3Event,
+  slug: string,
+  cacheTtl?: number,
+): Promise<Link | null> {
+  // Check if KV is available
   const { cloudflare } = event.context
+  if (!cloudflare?.env?.KV) {
+    return null
+  }
   const { KV } = cloudflare.env
-  return await KV.get(`link:${slug}`, { type: 'json', cacheTtl }) as Link | null
+  return (await KV.get(`link:${slug}`, {
+    type: 'json',
+    cacheTtl,
+  })) as Link | null
 }
 
-export async function getLinkWithMetadata(event: H3Event, slug: string): Promise<{ link: Link | null, metadata: Record<string, unknown> | null }> {
+export async function getLinkWithMetadata(
+  event: H3Event,
+  slug: string,
+): Promise<{ link: Link | null, metadata: Record<string, unknown> | null }> {
+  // Check if KV is available
   const { cloudflare } = event.context
+  if (!cloudflare?.env?.KV) {
+    return {
+      link: null,
+      metadata: null,
+    }
+  }
   const { KV } = cloudflare.env
-  const { metadata, value: link } = await KV.getWithMetadata(`link:${slug}`, { type: 'json' })
-  return { link: link as Link | null, metadata: metadata as Record<string, unknown> | null }
+  const { metadata, value: link } = await KV.getWithMetadata(`link:${slug}`, {
+    type: 'json',
+  })
+  return {
+    link: link as Link | null,
+    metadata: metadata as Record<string, unknown> | null,
+  }
 }
 
 export async function deleteLink(event: H3Event, slug: string): Promise<void> {
+  // Check if KV is available
   const { cloudflare } = event.context
+  if (!cloudflare?.env?.KV) {
+    return
+  }
   const { KV } = cloudflare.env
   await KV.delete(`link:${slug}`)
 }
 
-export async function linkExists(event: H3Event, slug: string): Promise<boolean> {
+export async function linkExists(
+  event: H3Event,
+  slug: string,
+): Promise<boolean> {
   const link = await getLink(event, slug)
   return link !== null
 }
@@ -69,8 +106,18 @@ interface ListLinksResult {
   cursor?: string
 }
 
-export async function listLinks(event: H3Event, options: ListLinksOptions): Promise<ListLinksResult> {
+export async function listLinks(
+  event: H3Event,
+  options: ListLinksOptions,
+): Promise<ListLinksResult> {
+  // Check if KV is available
   const { cloudflare } = event.context
+  if (!cloudflare?.env?.KV) {
+    return {
+      links: [],
+      list_complete: true,
+    }
+  }
   const { KV } = cloudflare.env
   const list = await KV.list({
     prefix: 'link:',
@@ -80,7 +127,9 @@ export async function listLinks(event: H3Event, options: ListLinksOptions): Prom
 
   const links = await Promise.all(
     (list.keys || []).map(async (key: { name: string }) => {
-      const { metadata, value: link } = await KV.getWithMetadata(key.name, { type: 'json' }) as { metadata: Record<string, unknown> | null, value: Link | null }
+      const { metadata, value: link } = (await KV.getWithMetadata(key.name, {
+        type: 'json',
+      })) as { metadata: Record<string, unknown> | null, value: Link | null }
       if (link) {
         return {
           ...(metadata ?? {}),
