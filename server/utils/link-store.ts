@@ -19,13 +19,24 @@ export function buildShortLink(event: H3Event, slug: string): string {
   return `${getRequestProtocol(event)}://${getRequestHost(event)}/${slug}`
 }
 
-export async function putLink(event: H3Event, link: Link): Promise<void> {
-  // Check if KV is available
+/**
+ * Get KV instance from event context if available
+ * @param event H3Event object
+ * @returns KV instance or null if not available
+ */
+export function getKV(event: H3Event): KVNamespace | null {
   const { cloudflare } = event.context
   if (!cloudflare?.env?.KV) {
+    return null
+  }
+  return cloudflare.env.KV
+}
+
+export async function putLink(event: H3Event, link: Link): Promise<void> {
+  const KV = getKV(event)
+  if (!KV) {
     return
   }
-  const { KV } = cloudflare.env
   const expiration = getExpiration(event, link.expiration)
 
   await KV.put(`link:${link.slug}`, JSON.stringify(link), {
@@ -43,12 +54,10 @@ export async function getLink(
   slug: string,
   cacheTtl?: number,
 ): Promise<Link | null> {
-  // Check if KV is available
-  const { cloudflare } = event.context
-  if (!cloudflare?.env?.KV) {
+  const KV = getKV(event)
+  if (!KV) {
     return null
   }
-  const { KV } = cloudflare.env
   return (await KV.get(`link:${slug}`, {
     type: 'json',
     cacheTtl,
@@ -59,15 +68,13 @@ export async function getLinkWithMetadata(
   event: H3Event,
   slug: string,
 ): Promise<{ link: Link | null, metadata: Record<string, unknown> | null }> {
-  // Check if KV is available
-  const { cloudflare } = event.context
-  if (!cloudflare?.env?.KV) {
+  const KV = getKV(event)
+  if (!KV) {
     return {
       link: null,
       metadata: null,
     }
   }
-  const { KV } = cloudflare.env
   const { metadata, value: link } = await KV.getWithMetadata(`link:${slug}`, {
     type: 'json',
   })
@@ -78,12 +85,10 @@ export async function getLinkWithMetadata(
 }
 
 export async function deleteLink(event: H3Event, slug: string): Promise<void> {
-  // Check if KV is available
-  const { cloudflare } = event.context
-  if (!cloudflare?.env?.KV) {
+  const KV = getKV(event)
+  if (!KV) {
     return
   }
-  const { KV } = cloudflare.env
   await KV.delete(`link:${slug}`)
 }
 
@@ -110,15 +115,13 @@ export async function listLinks(
   event: H3Event,
   options: ListLinksOptions,
 ): Promise<ListLinksResult> {
-  // Check if KV is available
-  const { cloudflare } = event.context
-  if (!cloudflare?.env?.KV) {
+  const KV = getKV(event)
+  if (!KV) {
     return {
       links: [],
       list_complete: true,
     }
   }
-  const { KV } = cloudflare.env
   const list = await KV.list({
     prefix: 'link:',
     limit: options.limit,
