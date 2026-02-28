@@ -136,32 +136,20 @@ onMounted(() => {
           >
         </div>
       </div>
-      <Transition name="fade" mode="out-in">
-        <Tabs v-model="shape" default-value="square">
-          <div class="mb-4 flex items-center justify-between">
-            <TabsList>
-              <TabsTrigger value="square">
-                {{ $t('home.features.qr_code.square') }}
-              </TabsTrigger>
-              <TabsTrigger value="circle">
-                {{ $t('home.features.qr_code.circle') }}
-              </TabsTrigger>
-            </TabsList>
-          </div>
-          <TabsContent value="square" class="mt-0">
-            <span v-if="shape === 'square'">
+      <Tabs v-model="shape" default-value="square">
+        <div class="flex items-center justify-between">
+          <TabsList>
+            <TabsTrigger value="square" class="block">
               {{ $t('home.features.qr_code.square') }}
-            </span>
-          </TabsContent>
-          <TabsContent value="circle" class="mt-0">
-            <span v-if="shape === 'circle'">
+            </TabsTrigger>
+            <TabsTrigger value="circle" class="block">
               {{ $t('home.features.qr_code.circle') }}
-            </span>
-          </TabsContent>
-        </Tabs>
-      </Transition>
+            </TabsTrigger>
+          </TabsList>
+        </div>
+      </Tabs>
       <Button variant="outline" size="sm" @click="downloadQRCode">
-        <Download class="mr-2 h-4 w-4" />
+        <Download class="h-4 w-4" />
         {{ $t('links.download_qr_code') }}
       </Button>
     </div>
@@ -171,7 +159,7 @@ onMounted(() => {
 <style scoped>
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity 0.3s ease;
+  transition: opacity 3s ease;
 }
 
 .fade-enter-from,

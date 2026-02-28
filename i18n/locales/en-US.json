@@ -1,308 +1,308 @@
 {
   "common": {
-    "i18n": "Multi Language",
     "abbreviations": "En",
-    "current_language": "English",
-    "try_again": "Try again",
     "cancel": "Cancel",
-    "continue": "Continue",
     "close": "Close",
-    "save": "Save",
-    "edit": "Edit",
+    "continue": "Continue",
+    "current_language": "English",
     "delete": "Delete",
     "delete_success": "Delete successful!",
-    "search": "Search"
+    "edit": "Edit",
+    "i18n": "Multi Language",
+    "save": "Save",
+    "search": "Search",
+    "try_again": "Try again"
   },
-  "theme": {
-    "toggle": "Toggle theme",
-    "light": "Light",
-    "dark": "Dark",
-    "system": "System"
+  "dashboard": {
+    "count": "Count",
+    "custom_date": "Custom Date",
+    "date": "Date",
+    "date_picker": {
+      "custom": "Custom",
+      "custom_title": "Custom Date",
+      "date_range": "Date Range",
+      "last_24h": "Last 24 hours",
+      "last_30d": "Last 30 days",
+      "last_7d": "Last 7 days",
+      "last_90d": "Last 90 days",
+      "single_date": "Date",
+      "this_month": "This month",
+      "this_week": "This week",
+      "today": "Today"
+    },
+    "date_range": "Date Range",
+    "details": "Details",
+    "filter_placeholder": "Filter links...",
+    "loading": "Loading",
+    "locations": "Locations",
+    "metrics": {
+      "browser": "Browser",
+      "browserType": "Browser Type",
+      "city": "City",
+      "country": "Country",
+      "device": "Device",
+      "deviceType": "Device Type",
+      "language": "Language",
+      "os": "OS",
+      "referer": "Referer",
+      "region": "Region",
+      "slug": "Slug",
+      "timezone": "Timezone"
+    },
+    "name": "Name",
+    "no_data": "No Data",
+    "none": "(None)",
+    "referers": "Referers",
+    "stats": "'s Stats",
+    "time_picker": {
+      "last_10m": "Last 10 minutes",
+      "last_12h": "Last 12 hours",
+      "last_1h": "Last 1 hour",
+      "last_24h": "Last 24 hours",
+      "last_30m": "Last 30 minutes",
+      "last_5m": "Last 5 minutes",
+      "last_6h": "Last 6 hours",
+      "today": "Today"
+    },
+    "title": "Dashboard",
+    "trend": "Trend",
+    "views": "Views",
+    "visitors": "Visitors(IP)",
+    "visits": "Visits",
+    "weekly_trend": "Weekly Trend"
   },
-  "login": {
-    "title": "Login",
-    "description": "Enter your site token to login",
-    "tips": "Tips",
-    "preview_token": "The site token for preview mode is",
-    "submit": "Login",
-    "failed": "Login failed, please try again",
-    "token_label": "Site Token",
-    "token_required": "Token is required"
-  },
-  "logout": {
-    "title": "LogOut?",
-    "confirm": "Are you sure you want to log out?",
-    "action": "LogOut"
+  "home": {
+    "cta": {
+      "button": "Start Deploy",
+      "description": "With just a few simple clicks, you can start deploying without any expenses",
+      "title": "Deployment immediately"
+    },
+    "features": {
+      "ai_slug": {
+        "description": "Leverage AI to generate slugs",
+        "title": "AI Slug"
+      },
+      "analytics": {
+        "description": "Monitor link analytics and gather insightful statistics",
+        "title": "Analytics"
+      },
+      "customizable_slug": {
+        "description": "Support for personalized slugs and case sensitivity",
+        "title": "Customizable Slug"
+      },
+      "device_routing": {
+        "description": "Redirect iOS/Android users to App Store links",
+        "title": "Device Routing"
+      },
+      "import_export": {
+        "description": "Bulk migration via JSON files",
+        "title": "Import/Export"
+      },
+      "link_expiration": {
+        "description": "Set expiration dates for your links",
+        "title": "Link Expiration"
+      },
+      "multi_language": {
+        "description": "Full i18n support for the dashboard",
+        "title": "Multi-language"
+      },
+      "og_preview": {
+        "description": "Custom OpenGraph previews for social media",
+        "title": "Social Preview"
+      },
+      "qr_code": {
+        "circle": "Circle",
+        "description": "Generate QR codes for your short links",
+        "square": "Square",
+        "title": "QR Code"
+      },
+      "realtime_analytics": {
+        "description": "Live 3D globe and real-time event logs",
+        "title": "Real-time Analytics"
+      },
+      "serverless": {
+        "description": "Deploy without the need for traditional servers",
+        "title": "Serverless"
+      },
+      "subtitle": "Simple and sufficient functionality",
+      "title": "Features",
+      "url_shortening": {
+        "description": "Compress your URLs to their minimal length",
+        "title": "URL Shortening"
+      }
+    },
+    "hero": {
+      "github_repo": "GitHub Repo"
+    },
+    "logos": {
+      "title": "Built with awesome technologies"
+    },
+    "stats": {
+      "forks": "Forks",
+      "stars": "Stars on GitHub",
+      "subtitle": "Trusted by developers around the world",
+      "title": "Sink in Numbers"
+    },
+    "testimonials": {
+      "subtitle": "See what developers are saying about Sink",
+      "title": "Loved by Users"
+    },
+    "twitter": {
+      "follow": "Follow on X(Twitter)"
+    }
   },
   "layouts": {
     "footer": {
       "copyright": "Products of HTML.ZONE",
       "social": {
-        "email": "Email",
-        "telegram": "Telegram",
         "blog": "Blog",
-        "twitter": "Twitter",
+        "email": "Email",
+        "github": "GitHub",
         "mastodon": "Mastodon",
-        "github": "GitHub"
+        "telegram": "Telegram",
+        "twitter": "Twitter"
       }
     },
     "header": {
       "select_language": "Select Language"
     }
   },
-  "nav": {
-    "links": "Links",
-    "analysis": "Analysis",
-    "realtime": "Realtime",
-    "migrate": "Import/Export"
-  },
-  "sidebar": {
-    "subtitle": "Link Shortener",
-    "platform": "Platform",
-    "settings": "Settings",
-    "import": "Import",
-    "export": "Export",
-    "coffee": "Buy me a coffee",
-    "github": "GitHub",
-    "stars": "Stars",
-    "update": "New version {version} available (current: {current})"
-  },
-  "home": {
-    "hero": {
-      "github_repo": "GitHub Repo"
-    },
-    "features": {
-      "title": "Features",
-      "subtitle": "Simple and sufficient functionality",
-      "url_shortening": {
-        "title": "URL Shortening",
-        "description": "Compress your URLs to their minimal length"
-      },
-      "analytics": {
-        "title": "Analytics",
-        "description": "Monitor link analytics and gather insightful statistics"
-      },
-      "serverless": {
-        "title": "Serverless",
-        "description": "Deploy without the need for traditional servers"
-      },
-      "customizable_slug": {
-        "title": "Customizable Slug",
-        "description": "Support for personalized slugs and case sensitivity"
-      },
-      "ai_slug": {
-        "title": "AI Slug",
-        "description": "Leverage AI to generate slugs"
-      },
-      "link_expiration": {
-        "title": "Link Expiration",
-        "description": "Set expiration dates for your links"
-      },
-      "device_routing": {
-        "title": "Device Routing",
-        "description": "Redirect iOS/Android users to App Store links"
-      },
-      "og_preview": {
-        "title": "Social Preview",
-        "description": "Custom OpenGraph previews for social media"
-      },
-      "realtime_analytics": {
-        "title": "Real-time Analytics",
-        "description": "Live 3D globe and real-time event logs"
-      },
-      "qr_code": {
-        "title": "QR Code",
-        "description": "Generate QR codes for your short links",
-        "square": "Square",
-        "circle": "Circle"
-      },
-      "import_export": {
-        "title": "Import/Export",
-        "description": "Bulk migration via JSON files"
-      },
-      "multi_language": {
-        "title": "Multi-language",
-        "description": "Full i18n support for the dashboard"
-      }
-    },
-    "cta": {
-      "title": "Deployment immediately",
-      "description": "With just a few simple clicks, you can start deploying without any expenses",
-      "button": "Start Deploy"
-    },
-    "logos": {
-      "title": "Built with awesome technologies"
-    },
-    "twitter": {
-      "follow": "Follow on X(Twitter)"
-    },
-    "stats": {
-      "title": "Sink in Numbers",
-      "subtitle": "Trusted by developers around the world",
-      "stars": "Stars on GitHub",
-      "forks": "Forks"
-    },
-    "testimonials": {
-      "title": "Loved by Users",
-      "subtitle": "See what developers are saying about Sink"
-    }
-  },
-  "dashboard": {
-    "title": "Dashboard",
-    "visits": "Visits",
-    "views": "Views",
-    "visitors": "Visitors(IP)",
-    "referers": "Referers",
-    "stats": "'s Stats",
-    "trend": "Trend",
-    "weekly_trend": "Weekly Trend",
-    "custom_date": "Custom Date",
-    "date": "Date",
-    "date_range": "Date Range",
-    "locations": "Locations",
-    "details": "Details",
-    "name": "Name",
-    "count": "Count",
-    "loading": "Loading",
-    "no_data": "No Data",
-    "none": "(None)",
-    "filter_placeholder": "Filter links...",
-    "date_picker": {
-      "today": "Today",
-      "last_24h": "Last 24 hours",
-      "this_week": "This week",
-      "last_7d": "Last 7 days",
-      "this_month": "This month",
-      "last_30d": "Last 30 days",
-      "last_90d": "Last 90 days",
-      "custom": "Custom",
-      "custom_title": "Custom Date",
-      "single_date": "Date",
-      "date_range": "Date Range"
-    },
-    "metrics": {
-      "country": "Country",
-      "region": "Region",
-      "city": "City",
-      "referer": "Referer",
-      "slug": "Slug",
-      "language": "Language",
-      "timezone": "Timezone",
-      "device": "Device",
-      "deviceType": "Device Type",
-      "os": "OS",
-      "browser": "Browser",
-      "browserType": "Browser Type"
-    },
-    "time_picker": {
-      "today": "Today",
-      "last_5m": "Last 5 minutes",
-      "last_10m": "Last 10 minutes",
-      "last_30m": "Last 30 minutes",
-      "last_1h": "Last 1 hour",
-      "last_6h": "Last 6 hours",
-      "last_12h": "Last 12 hours",
-      "last_24h": "Last 24 hours"
-    }
-  },
   "links": {
-    "create": "Create Link",
-    "edit": "Edit Link",
-    "delete_confirm_title": "Are you absolutely sure?",
-    "delete_confirm_desc": "This action cannot be undone. This will really delete your link from servers.",
-    "delete_success": "Delete successful!",
-    "delete_failed": "Delete failed!",
-    "update_success": "Link updated successfully",
-    "create_success": "Link created successfully",
-    "preview_mode_tip": "The preview mode link is valid for up to 5 minutes.",
-    "search_placeholder": "Search links...",
-    "no_results": "No links found.",
-    "group_title": "Links",
-    "copy_success": "Copy successful!",
-    "created_at": "Created At",
-    "updated_at": "Updated At",
-    "expires_at": "Expires At",
-    "no_more": "No more links",
-    "load_failed": "Loading links failed,",
-    "download_qr_code": "Download QR Code",
+    "ai_slug_failed": "Failed to generate AI slug",
     "change_qr_color": "Change QR code color",
+    "copy_success": "Copy successful!",
+    "create": "Create Link",
+    "create_failed": "Failed to create link",
+    "create_success": "Link created successfully",
+    "created_at": "Created At",
+    "delete_confirm_desc": "This action cannot be undone. This will really delete your link from servers.",
+    "delete_confirm_title": "Are you absolutely sure?",
+    "delete_failed": "Delete failed!",
+    "delete_success": "Delete successful!",
+    "download_qr_code": "Download",
+    "edit": "Edit Link",
+    "expires_at": "Expires At",
     "form": {
-      "url": "URL",
-      "slug": "Slug",
-      "comment": "Comment",
-      "expiration": "Expiration",
-      "pick_date": "Pick a date",
-      "device_redirect": "Device Redirect",
-      "google_play": "Google Play URL",
+      "advanced": "Advanced",
       "app_store": "App Store URL",
-      "link_settings": "Link Settings",
-      "redirect_with_query_label": "Redirect with Query Parameters",
-      "redirect_with_query_description": "Append query parameters from the short link to the destination URL. Overrides global setting.",
-      "cloaking_label": "Enable Link Cloaking",
       "cloaking_description": "Show your short link in the browser address bar instead of the destination URL. May not work for sites that block iframe embedding.",
-      "password_label": "Password Protection",
-      "password_description": "Require a password to access this short link.",
-      "password_placeholder": "Leave empty to disable",
-      "og_settings": "OpenGraph Settings",
-      "og_title": "Title",
-      "og_title_placeholder": "Leave empty to use URL hostname",
+      "cloaking_label": "Enable Link Cloaking",
+      "comment": "Comment",
+      "device_redirect": "Device Redirect",
+      "expiration": "Expiration",
+      "google_play": "Google Play URL",
+      "image_invalid_type": "Please upload an image file",
+      "image_ratio_hint": "Recommended: 1200×630",
+      "image_size_limit": "Image size cannot exceed 5MB",
+      "image_upload_failed": "Failed to upload image",
+      "image_upload_hint": "Click or drag to upload image",
+      "image_upload_success": "Image uploaded successfully",
+      "link_settings": "Link Settings",
+      "more_options": "More Options",
       "og_description": "Description",
       "og_description_placeholder": "Link description",
       "og_image": "Image",
-      "advanced": "Advanced",
-      "more_options": "More Options",
-      "image_invalid_type": "Please upload an image file",
-      "image_size_limit": "Image size cannot exceed 5MB",
-      "image_upload_success": "Image uploaded successfully",
-      "image_upload_failed": "Failed to upload image",
-      "image_upload_hint": "Click or drag to upload image",
-      "image_ratio_hint": "Recommended: 1200×630",
-      "slug_required": "Please enter a slug first"
+      "og_settings": "OpenGraph Settings",
+      "og_title": "Title",
+      "og_title_placeholder": "Leave empty to use URL hostname",
+      "password_description": "Require a password to access this short link.",
+      "password_label": "Password Protection",
+      "password_placeholder": "Leave empty to disable",
+      "pick_date": "Pick a date",
+      "redirect_with_query_description": "Append query parameters from the short link to the destination URL. Overrides global setting.",
+      "redirect_with_query_label": "Redirect with Query Parameters",
+      "slug": "Slug",
+      "slug_required": "Please enter a slug first",
+      "url": "URL"
     },
+    "group_title": "Links",
+    "load_failed": "Loading links failed,",
+    "no_more": "No more links",
+    "no_results": "No links found.",
+    "preview_mode_tip": "The preview mode link is valid for up to 5 minutes.",
+    "search_placeholder": "Search links...",
     "sort": {
+      "az": "Slug A-Z",
       "newest": "Newest First",
       "oldest": "Oldest First",
-      "az": "Slug A-Z",
-      "za": "Slug Z-A",
-      "tip": "Experience: Only for loaded links"
+      "tip": "Experience: Only for loaded links",
+      "za": "Slug Z-A"
     },
     "update_failed": "Failed to update link",
-    "create_failed": "Failed to create link",
-    "ai_slug_failed": "Failed to generate AI slug"
+    "update_success": "Link updated successfully",
+    "updated_at": "Updated At"
+  },
+  "login": {
+    "description": "Enter your site token to login",
+    "failed": "Login failed, please try again",
+    "preview_token": "The site token for preview mode is",
+    "submit": "Login",
+    "tips": "Tips",
+    "title": "Login",
+    "token_label": "Site Token",
+    "token_required": "Token is required"
+  },
+  "logout": {
+    "action": "LogOut",
+    "confirm": "Are you sure you want to log out?",
+    "title": "LogOut?"
   },
   "migrate": {
     "export": {
-      "title": "Export Links",
-      "description": "Download all your links as a JSON file",
       "button": "Export All",
-      "total_links": "Total links",
+      "description": "Download all your links as a JSON file",
+      "failed": "Export failed",
       "success": "Export successful",
-      "failed": "Export failed"
+      "title": "Export Links",
+      "total_links": "Total links"
     },
     "import": {
-      "title": "Import Links",
-      "description": "Upload a JSON file to import links",
-      "dropzone": "Drop JSON file here or click to upload",
-      "links_found": "links found",
       "button": "Start Import",
-      "importing": "Importing...",
-      "import_more": "Import More",
-      "download_success": "Download Success Items",
-      "download_skipped": "Download Skipped Items",
+      "description": "Upload a JSON file to import links",
       "download_failed": "Download Failed Items",
-      "result": {
-        "title": "Import Result",
-        "success": "Successfully imported",
-        "skipped": "Skipped (already exists)",
-        "failed": "Failed",
-        "success_message": "{count} links imported successfully"
-      },
+      "download_skipped": "Download Skipped Items",
+      "download_success": "Download Success Items",
+      "dropzone": "Drop JSON file here or click to upload",
       "errors": {
-        "invalid_json": "Invalid JSON file",
         "invalid_format": "Invalid file format. Please use a file exported from Sink.",
+        "invalid_json": "Invalid JSON file",
         "no_links": "No links found in file",
         "parse_error": "Failed to parse file"
-      }
+      },
+      "import_more": "Import More",
+      "importing": "Importing...",
+      "links_found": "links found",
+      "result": {
+        "failed": "Failed",
+        "skipped": "Skipped (already exists)",
+        "success": "Successfully imported",
+        "success_message": "{count} links imported successfully",
+        "title": "Import Result"
+      },
+      "title": "Import Links"
     }
+  },
+  "nav": {
+    "analysis": "Analysis",
+    "links": "Links",
+    "migrate": "Import/Export",
+    "realtime": "Realtime"
+  },
+  "sidebar": {
+    "coffee": "Buy me a coffee",
+    "export": "Export",
+    "github": "GitHub",
+    "import": "Import",
+    "platform": "Platform",
+    "settings": "Settings",
+    "stars": "Stars",
+    "subtitle": "Link Shortener",
+    "update": "New version {version} available (current: {current})"
+  },
+  "theme": {
+    "dark": "Dark",
+    "light": "Light",
+    "system": "System",
+    "toggle": "Toggle theme"
   }
 }
