@@ -148,6 +148,16 @@ onMounted(() => {
               </TabsTrigger>
             </TabsList>
           </div>
+          <TabsContent value="square" class="mt-0">
+            <span v-if="shape === 'square'">
+              {{ $t('home.features.qr_code.square') }}
+            </span>
+          </TabsContent>
+          <TabsContent value="circle" class="mt-0">
+            <span v-if="shape === 'circle'">
+              {{ $t('home.features.qr_code.circle') }}
+            </span>
+          </TabsContent>
         </Tabs>
       </Transition>
       <Button variant="outline" size="sm" @click="downloadQRCode">
@@ -157,3 +167,15 @@ onMounted(() => {
     </div>
   </div>
 </template>
+
+<style scoped>
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+</style>
