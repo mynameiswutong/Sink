@@ -19,44 +19,17 @@ const locales: LocaleObject[] = [
     name: '繁體中文',
     emoji: '🇹🇼',
   },
-  {
-    code: 'fr-FR',
-    file: 'fr-FR.json',
-    name: 'Français',
-    emoji: '🇫🇷',
-  },
-  {
-    code: 'vi-VN',
-    file: 'vi-VN.json',
-    name: 'Tiếng Việt',
-    emoji: '🇻🇳',
-  },
-  {
-    code: 'de-DE',
-    file: 'de-DE.json',
-    name: 'Deutsch',
-    emoji: '🇩🇪',
-  },
-  {
-    code: 'pt-PT',
-    file: 'pt-PT.json',
-    name: 'Português (PT)',
-    emoji: '🇵🇹',
-  },
-  {
-    code: 'pt-BR',
-    file: 'pt-BR.json',
-    name: 'Português (BR)',
-    emoji: '🇧🇷',
-  },
 ]
 
 function buildLocales() {
-  const useLocales = Object.values(locales).reduce((acc, data) => {
-    acc.push(data)
+  const useLocales = Object.values(locales).reduce(
+    (acc, data) => {
+      acc.push(data)
 
-    return acc
-  }, <LocaleObject[]>[])
+      return acc
+    },
+    <LocaleObject[]>[],
+  )
 
   return useLocales.sort((a, b) => a.code.localeCompare(b.code))
 }

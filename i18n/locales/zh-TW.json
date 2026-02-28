@@ -112,7 +112,9 @@
       },
       "qr_code": {
         "title": "QR Code",
-        "description": "為短連結生成 QR Code"
+        "description": "為短連結生成 QR Code",
+        "square": "方形",
+        "circle": "圓形"
       },
       "import_export": {
         "title": "匯入/匯出",
@@ -149,8 +151,8 @@
     "title": "儀表板",
     "visits": "訪問次數",
     "views": "瀏覽次數",
-    "visitors": "訪客人數",
-    "referers": "引薦來源",
+    "visitors": "訪客人數(IP)",
+    "referers": "訪問來源",
     "stats": "的統計",
     "trend": "趨勢",
     "weekly_trend": "週度趨勢",

@@ -112,7 +112,9 @@
       },
       "qr_code": {
         "title": "二维码",
-        "description": "为短链生成二维码"
+        "description": "为短链生成二维码",
+        "square": "方形",
+        "circle": "圆形"
       },
       "import_export": {
         "title": "导入/导出",
@@ -149,8 +151,8 @@
     "title": "仪表盘",
     "visits": "访问量",
     "views": "浏览量",
-    "visitors": "访客数",
-    "referers": "引荐来源",
+    "visitors": "访客数(IP)",
+    "referers": "访问来源",
     "stats": "的统计",
     "trend": "趋势",
     "weekly_trend": "周度趋势",

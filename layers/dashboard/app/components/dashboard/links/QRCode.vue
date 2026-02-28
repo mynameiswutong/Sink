@@ -1,21 +1,31 @@
 <script setup lang="ts">
+import type { ShapeType } from 'qr-code-styling'
 import { Download } from 'lucide-vue-next'
 import QRCodeStyling from 'qr-code-styling'
 
-const props = withDefaults(defineProps<{
-  data: string
-  image?: string
-}>(), {
-  image: '',
-})
+const props = withDefaults(
+  defineProps<{
+    data: string
+    image?: string
+  }>(),
+  {
+    image: '',
+  },
+)
 const color = ref('#000000')
+const shape = ref<ShapeType>('square')
 const options = {
   width: 256,
   height: 256,
+  shape: 'square' as const, // 二维码形状, 可选值: 'circle' | 'square'
   data: props.data,
-  type: 'svg' as const,
+  type: 'svg' as const, // 二维码类型, 可选值: 'svg' | 'canvas'
   margin: 10,
-  qrOptions: { typeNumber: 0 as const, mode: 'Byte' as const, errorCorrectionLevel: 'Q' as const },
+  qrOptions: {
+    typeNumber: 0 as const,
+    mode: 'Byte' as const,
+    errorCorrectionLevel: 'Q' as const,
+  },
   imageOptions: { hideBackgroundDots: true, imageSize: 0.4, margin: 2 },
   dotsOptions: { type: 'extra-rounded' as const, color: '#000000' },
   backgroundOptions: { color: '#ffffff' },
@@ -79,6 +89,16 @@ watch(color, (newColor) => {
   updateColor(newColor)
 })
 
+function updateShape(newShape: ShapeType) {
+  qrCode.update({
+    shape: newShape,
+  })
+}
+
+watch(shape, (newShape) => {
+  updateShape(newShape)
+})
+
 function downloadQRCode() {
   const slug = props.data.split('/').pop()
   qrCode.download({
@@ -96,11 +116,7 @@ onMounted(() => {
 
 <template>
   <div class="flex flex-col items-center gap-4">
-    <div
-      ref="qrCodeEl"
-      :data-text="data"
-      class="rounded-lg bg-white p-1"
-    />
+    <div ref="qrCodeEl" :data-text="data" class="rounded-lg bg-white p-1" />
     <div class="flex items-center gap-4">
       <div class="relative flex items-center">
         <div
@@ -120,11 +136,21 @@ onMounted(() => {
           >
         </div>
       </div>
-      <Button
-        variant="outline"
-        size="sm"
-        @click="downloadQRCode"
-      >
+      <Transition name="fade" mode="out-in">
+        <Tabs v-model="shape" default-value="square">
+          <div class="mb-4 flex items-center justify-between">
+            <TabsList>
+              <TabsTrigger value="square">
+                {{ $t('home.features.qr_code.square') }}
+              </TabsTrigger>
+              <TabsTrigger value="circle">
+                {{ $t('home.features.qr_code.circle') }}
+              </TabsTrigger>
+            </TabsList>
+          </div>
+        </Tabs>
+      </Transition>
+      <Button variant="outline" size="sm" @click="downloadQRCode">
         <Download class="mr-2 h-4 w-4" />
         {{ $t('links.download_qr_code') }}
       </Button>

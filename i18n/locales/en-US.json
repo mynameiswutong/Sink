@@ -112,7 +112,9 @@
       },
       "qr_code": {
         "title": "QR Code",
-        "description": "Generate QR codes for your short links"
+        "description": "Generate QR codes for your short links",
+        "square": "Square",
+        "circle": "Circle"
       },
       "import_export": {
         "title": "Import/Export",
@@ -149,7 +151,7 @@
     "title": "Dashboard",
     "visits": "Visits",
     "views": "Views",
-    "visitors": "Visitors",
+    "visitors": "Visitors(IP)",
     "referers": "Referers",
     "stats": "'s Stats",
     "trend": "Trend",
