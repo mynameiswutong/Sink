@@ -136,22 +136,20 @@ onMounted(() => {
           >
         </div>
       </div>
-      <Transition name="fade" mode="out-in">
-        <Tabs v-model="shape" default-value="square">
-          <div class="mb-4 flex items-center justify-between">
-            <TabsList>
-              <TabsTrigger value="square">
-                {{ $t('home.features.qr_code.square') }}
-              </TabsTrigger>
-              <TabsTrigger value="circle">
-                {{ $t('home.features.qr_code.circle') }}
-              </TabsTrigger>
-            </TabsList>
-          </div>
-        </Tabs>
-      </Transition>
+      <Tabs v-model="shape" default-value="square">
+        <div class="flex items-center justify-between">
+          <TabsList>
+            <TabsTrigger value="square" class="block">
+              {{ $t('home.features.qr_code.square') }}
+            </TabsTrigger>
+            <TabsTrigger value="circle" class="block">
+              {{ $t('home.features.qr_code.circle') }}
+            </TabsTrigger>
+          </TabsList>
+        </div>
+      </Tabs>
       <Button variant="outline" size="sm" @click="downloadQRCode">
-        <Download class="mr-2 h-4 w-4" />
+        <Download class="h-4 w-4" />
         {{ $t('links.download_qr_code') }}
       </Button>
     </div>
