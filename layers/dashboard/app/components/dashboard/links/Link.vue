@@ -44,7 +44,7 @@ function getLinkHost(url: string): string | undefined {
 const shortLink = computed(() => `${origin}/${props.link.slug}`)
 const linkIcon = computed(
   () =>
-    `https://unavatar.webp.se/${getLinkHost(props.link.url)}?fallback=https://sink.cool/icon.png`,
+    `https://unavatar.webp.se/${getLinkHost(props.link.url)}/?fallback=https://sink.cool/icon.png`,
 )
 
 const { copy, copied } = useClipboard({
