@@ -7,10 +7,12 @@
     "current_language": "繁體中文",
     "delete": "刪除",
     "delete_success": "刪除成功！",
+    "description": "一個簡單、快速、安全的鏈接縮短器，帶分析功能，100% 在 Cloudflare 上運行。",
     "edit": "編輯",
     "i18n": "多語言",
     "save": "保存",
     "search": "搜尋",
+    "title": "Sink",
     "try_again": "重試"
   },
   "dashboard": {
@@ -111,11 +113,12 @@
         "title": "社交預覽"
       },
       "qr_code": {
+        "background": "背景透明",
         "circle": "圓形",
+        "color": "‌顏色",
         "description": "為短連結生成 QR Code",
         "square": "方形",
-        "title": "QR Code",
-        "background": "背景透明"
+        "title": "QR Code"
       },
       "realtime_analytics": {
         "description": "3D 地球視覺化和即時事件日誌",

@@ -87,6 +87,18 @@ function copyLink() {
                 <ShieldAlert class="h-3 w-3" />
               </Badge>
             </div>
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger as-child>
+                  <p class="truncate text-sm">
+                    {{ link.comment || link.title || link.description }}
+                  </p>
+                </TooltipTrigger>
+                <TooltipContent class="max-w-[90svw] -translate-y-3 break-all">
+                  <p>{{ link.comment || link.title || link.description }}</p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
           </div>
 
           <Button

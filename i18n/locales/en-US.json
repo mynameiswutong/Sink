@@ -7,10 +7,12 @@
     "current_language": "English",
     "delete": "Delete",
     "delete_success": "Delete successful!",
+    "description": "A Simple / Speedy / Secure Link Shortener with Analytics, 100% run on Cloudflare.",
     "edit": "Edit",
     "i18n": "Multi Language",
     "save": "Save",
     "search": "Search",
+    "title": "Sink",
     "try_again": "Try again"
   },
   "dashboard": {
@@ -115,7 +117,8 @@
         "description": "Generate QR codes for your short links",
         "square": "Square",
         "title": "QR Code",
-        "background": "Background"
+        "background": "Background",
+        "color": "Color"
       },
       "realtime_analytics": {
         "description": "Live 3D globe and real-time event logs",
@@ -180,7 +183,7 @@
     "delete_confirm_title": "Are you absolutely sure?",
     "delete_failed": "Delete failed!",
     "delete_success": "Delete successful!",
-    "download_qr_code": "Download QRCode",
+    "download_qr_code": "Download",
     "edit": "Edit Link",
     "expires_at": "Expires At",
     "form": {
@@ -199,6 +202,10 @@
       "image_upload_hint": "Click or drag to upload image",
       "image_upload_success": "Image uploaded successfully",
       "link_settings": "Link Settings",
+      "more_options": "More Options",
+      "og_description": "Description",
+      "og_description_placeholder": "Link description",
+      "og_image": "Image",
       "og_settings": "OpenGraph Settings",
       "og_title": "Title",
       "og_title_placeholder": "Leave empty to use URL hostname",

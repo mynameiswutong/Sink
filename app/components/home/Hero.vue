@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import heroUrl from '@/assets/images/hero.svg?url'
 
-const { title, description } = useAppConfig()
+// const { title, description } = useAppConfig()
 </script>
 
 <template>
@@ -31,10 +31,10 @@ const { title, description } = useAppConfig()
               xl:text-6xl
             "
           >
-            {{ title }}
+            {{ $t('common.title') }}
           </h1>
           <p class="mt-6 text-lg text-pretty text-muted-foreground">
-            {{ description }}
+            {{ $t('common.description') }}
           </p>
 
           <div
@@ -46,7 +46,7 @@ const { title, description } = useAppConfig()
           >
             <Button as-child size="lg" class="px-5 text-base">
               <NuxtLink to="/dashboard">
-                <span class="text-nowrap">{{ $t("dashboard.title") }}</span>
+                <span class="text-nowrap">{{ $t('dashboard.title') }}</span>
               </NuxtLink>
             </Button>
           </div>

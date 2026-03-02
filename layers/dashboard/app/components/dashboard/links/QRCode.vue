@@ -86,15 +86,23 @@ function updateColor(newColor: string) {
   })
 }
 
-watch(color, (newColor) => {
-  updateColor(newColor)
-})
-
 function updateShape(newShape: ShapeType) {
   qrCode.update({
     shape: newShape,
   })
 }
+
+function downloadQRCode() {
+  const slug = props.data.split('/').pop()
+  qrCode.download({
+    extension: 'png',
+    name: `qr_${slug}`,
+  })
+}
+
+watch(color, (newColor) => {
+  updateColor(newColor)
+})
 
 watch(shape, (newShape) => {
   updateShape(newShape)
@@ -106,14 +114,6 @@ watch(bgTransparent, (newBgTransparent) => {
   })
 })
 
-function downloadQRCode() {
-  const slug = props.data.split('/').pop()
-  qrCode.download({
-    extension: 'png',
-    name: `qr_${slug}`,
-  })
-}
-
 onMounted(() => {
   if (qrCodeEl.value) {
     qrCode.append(qrCodeEl.value as unknown as HTMLElement)
@@ -123,20 +123,26 @@ onMounted(() => {
 
 <template>
   <div class="flex flex-col items-center gap-4">
-    <Transition name="qr-fade" mode="out-in">
-      <div
-        v-if="data"
-        ref="qrCodeEl"
-        :data-text="data"
-        class="rounded-lg bg-white p-1"
-      />
-    </Transition>
-    <div class="flex flex-col items-center gap-2">
-      <div class="flex items-center gap-4">
-        <div class="relative flex items-center">
+    <div
+      ref="qrCodeEl"
+      :data-text="data"
+      class="rounded-lg p-1"
+      :class="{ 'bg-white': !bgTransparent }"
+    />
+    <div class="flex w-full flex-col items-center gap-4">
+      <div class="flex w-full items-center justify-around">
+        <div class="relative flex items-center gap-2">
+          <label
+            class="
+              pr-2 text-sm leading-none text-stone-700 select-none
+              dark:text-white
+            "
+          >
+            {{ $t('home.features.qr_code.color') }}
+          </label>
           <div
             class="
-              h-8 w-8 cursor-pointer overflow-hidden rounded-full border
+              h-7 w-7 cursor-pointer overflow-hidden rounded-full border
               border-gray-300
               dark:border-gray-600
             "
@@ -151,18 +157,6 @@ onMounted(() => {
             >
           </div>
         </div>
-        <Tabs v-model="shape" default-value="square">
-          <div class="flex items-center justify-between">
-            <TabsList>
-              <TabsTrigger value="square" class="block">
-                {{ $t('home.features.qr_code.square') }}
-              </TabsTrigger>
-              <TabsTrigger value="circle" class="block">
-                {{ $t('home.features.qr_code.circle') }}
-              </TabsTrigger>
-            </TabsList>
-          </div>
-        </Tabs>
         <div class="flex items-center gap-2">
           <label
             class="
@@ -181,22 +175,24 @@ onMounted(() => {
           />
         </div>
       </div>
-      <Button variant="outline" size="sm" @click="downloadQRCode">
-        <Download class="h-4 w-4" />
-        {{ $t('links.download_qr_code') }}
-      </Button>
+      <div class="flex w-full items-center justify-around">
+        <Tabs v-model="shape" default-value="square">
+          <div class="flex items-center justify-between">
+            <TabsList>
+              <TabsTrigger value="square" class="block">
+                {{ $t('home.features.qr_code.square') }}
+              </TabsTrigger>
+              <TabsTrigger value="circle" class="block">
+                {{ $t('home.features.qr_code.circle') }}
+              </TabsTrigger>
+            </TabsList>
+          </div>
+        </Tabs>
+        <Button variant="outline" size="sm" @click="downloadQRCode">
+          <Download class="h-4 w-4" />
+          {{ $t('links.download_qr_code') }}
+        </Button>
+      </div>
     </div>
   </div>
 </template>
-
-<style scoped>
-.qr-fade-enter-active,
-.qr-fade-leave-active {
-  transition: opacity 0.3s ease;
-}
-
-.qr-fade-enter-from,
-.qr-fade-leave-to {
-  opacity: 0;
-}
-</style>
