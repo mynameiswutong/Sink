@@ -114,7 +114,8 @@
         "circle": "圆形",
         "description": "为短链生成二维码",
         "square": "方形",
-        "title": "二维码"
+        "title": "二维码",
+        "background": "背景透明"
       },
       "realtime_analytics": {
         "description": "3D 地球可视化和实时事件日志",
@@ -179,7 +180,7 @@
     "delete_confirm_title": "确定要删除吗？",
     "delete_failed": "删除失败！",
     "delete_success": "删除成功！",
-    "download_qr_code": "下载",
+    "download_qr_code": "下载二维码",
     "edit": "编辑链接",
     "expires_at": "过期时间",
     "form": {
@@ -213,8 +214,8 @@
       "redirect_with_query_label": "携带查询参数跳转",
       "slug": "短链",
       "slug_required": "请先输入短链",
-      "unsafe_label": "标记为不安全",
       "unsafe_description": "跳转前显示警告页面，访客需确认后才能继续。",
+      "unsafe_label": "标记为不安全",
       "url": "链接地址"
     },
     "group_title": "链接列表",
@@ -251,12 +252,12 @@
   },
   "migrate": {
     "backup": {
-      "title": "手动备份",
-      "description": "手动触发所有链接到已配置 R2 存储桶的备份",
-      "button": "开始备份",
       "backing_up": "备份中...",
+      "button": "开始备份",
+      "description": "手动触发所有链接到已配置 R2 存储桶的备份",
+      "failed": "备份失败",
       "success": "备份成功",
-      "failed": "备份失败"
+      "title": "手动备份"
     },
     "export": {
       "button": "导出全部",

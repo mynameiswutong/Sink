@@ -14,6 +14,7 @@ const props = withDefaults(
 )
 const color = ref('#000000')
 const shape = ref<ShapeType>('square')
+const bgTransparent = ref<boolean>(true)
 const options = {
   width: 256,
   height: 256,
@@ -27,8 +28,8 @@ const options = {
     errorCorrectionLevel: 'Q' as const,
   },
   imageOptions: { hideBackgroundDots: true, imageSize: 0.4, margin: 2 },
-  dotsOptions: { type: 'extra-rounded' as const, color: '#000000' },
-  backgroundOptions: { color: '#ffffff' },
+  dotsOptions: { type: 'rounded' as const, color: '#000000' },
+  backgroundOptions: { color: 'transparent' }, // 'transparent' | '#ffffff'
   image: props.image,
   dotsOptionsHelper: {
     colorType: { single: true, gradient: false },
@@ -40,7 +41,7 @@ const options = {
       rotation: '0',
     },
   },
-  cornersSquareOptions: { type: 'extra-rounded' as const, color: '#000000' },
+  cornersSquareOptions: { type: 'dot' as const, color: '#000000' },
   cornersSquareOptionsHelper: {
     colorType: { single: true, gradient: false },
     gradient: {
@@ -79,8 +80,8 @@ const qrCodeEl = useTemplateRef<HTMLElement>('qrCodeEl')
 
 function updateColor(newColor: string) {
   qrCode.update({
-    dotsOptions: { type: 'extra-rounded' as const, color: newColor },
-    cornersSquareOptions: { type: 'extra-rounded' as const, color: newColor },
+    dotsOptions: { type: 'rounded' as const, color: newColor },
+    cornersSquareOptions: { type: 'dot' as const, color: newColor },
     cornersDotOptions: { type: 'dot' as const, color: newColor },
   })
 }
@@ -97,6 +98,12 @@ function updateShape(newShape: ShapeType) {
 
 watch(shape, (newShape) => {
   updateShape(newShape)
+})
+
+watch(bgTransparent, (newBgTransparent) => {
+  qrCode.update({
+    backgroundOptions: { color: newBgTransparent ? 'transparent' : '#ffffff' },
+  })
 })
 
 function downloadQRCode() {
@@ -116,38 +123,64 @@ onMounted(() => {
 
 <template>
   <div class="flex flex-col items-center gap-4">
-    <div ref="qrCodeEl" :data-text="data" class="rounded-lg bg-white p-1" />
-    <div class="flex items-center gap-4">
-      <div class="relative flex items-center">
-        <div
-          class="
-            h-8 w-8 cursor-pointer overflow-hidden rounded-full border
-            border-gray-300
-            dark:border-gray-600
-          "
-          :style="{ backgroundColor: color }"
-          :title="$t('links.change_qr_color')"
-        >
-          <input
-            v-model="color"
-            type="color"
-            class="absolute inset-0 h-full w-full cursor-pointer opacity-0"
+    <Transition name="qr-fade" mode="out-in">
+      <div
+        v-if="data"
+        ref="qrCodeEl"
+        :data-text="data"
+        class="rounded-lg bg-white p-1"
+      />
+    </Transition>
+    <div class="flex flex-col items-center gap-2">
+      <div class="flex items-center gap-4">
+        <div class="relative flex items-center">
+          <div
+            class="
+              h-8 w-8 cursor-pointer overflow-hidden rounded-full border
+              border-gray-300
+              dark:border-gray-600
+            "
+            :style="{ backgroundColor: color }"
             :title="$t('links.change_qr_color')"
           >
+            <input
+              v-model="color"
+              type="color"
+              class="absolute inset-0 h-full w-full cursor-pointer opacity-0"
+              :title="$t('links.change_qr_color')"
+            >
+          </div>
+        </div>
+        <Tabs v-model="shape" default-value="square">
+          <div class="flex items-center justify-between">
+            <TabsList>
+              <TabsTrigger value="square" class="block">
+                {{ $t('home.features.qr_code.square') }}
+              </TabsTrigger>
+              <TabsTrigger value="circle" class="block">
+                {{ $t('home.features.qr_code.circle') }}
+              </TabsTrigger>
+            </TabsList>
+          </div>
+        </Tabs>
+        <div class="flex items-center gap-2">
+          <label
+            class="
+              pr-2 text-sm leading-none text-stone-700 select-none
+              dark:text-white
+            "
+            for="airplane-mode"
+          >
+            {{ $t('home.features.qr_code.background') }}
+          </label>
+
+          <Switch
+            id="background-switch"
+            :model-value="bgTransparent"
+            @update:model-value="bgTransparent = $event"
+          />
         </div>
       </div>
-      <Tabs v-model="shape" default-value="square">
-        <div class="flex items-center justify-between">
-          <TabsList>
-            <TabsTrigger value="square" class="block">
-              {{ $t('home.features.qr_code.square') }}
-            </TabsTrigger>
-            <TabsTrigger value="circle" class="block">
-              {{ $t('home.features.qr_code.circle') }}
-            </TabsTrigger>
-          </TabsList>
-        </div>
-      </Tabs>
       <Button variant="outline" size="sm" @click="downloadQRCode">
         <Download class="h-4 w-4" />
         {{ $t('links.download_qr_code') }}
@@ -155,3 +188,15 @@ onMounted(() => {
     </div>
   </div>
 </template>
+
+<style scoped>
+.qr-fade-enter-active,
+.qr-fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+
+.qr-fade-enter-from,
+.qr-fade-leave-to {
+  opacity: 0;
+}
+</style>

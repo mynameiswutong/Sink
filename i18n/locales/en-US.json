@@ -114,7 +114,8 @@
         "circle": "Circle",
         "description": "Generate QR codes for your short links",
         "square": "Square",
-        "title": "QR Code"
+        "title": "QR Code",
+        "background": "Background"
       },
       "realtime_analytics": {
         "description": "Live 3D globe and real-time event logs",
@@ -179,7 +180,7 @@
     "delete_confirm_title": "Are you absolutely sure?",
     "delete_failed": "Delete failed!",
     "delete_success": "Delete successful!",
-    "download_qr_code": "Download",
+    "download_qr_code": "Download QRCode",
     "edit": "Edit Link",
     "expires_at": "Expires At",
     "form": {
@@ -209,8 +210,8 @@
       "redirect_with_query_label": "Redirect with Query Parameters",
       "slug": "Slug",
       "slug_required": "Please enter a slug first",
-      "unsafe_label": "Mark as Unsafe",
       "unsafe_description": "Show a warning page before redirecting. Visitors must confirm to continue.",
+      "unsafe_label": "Mark as Unsafe",
       "url": "URL"
     },
     "group_title": "Links",
@@ -247,12 +248,12 @@
   },
   "migrate": {
     "backup": {
-      "title": "Manual Backup",
-      "description": "Trigger a manual backup of all links to the configured R2 bucket",
-      "button": "Start Backup",
       "backing_up": "Backing up...",
+      "button": "Start Backup",
+      "description": "Trigger a manual backup of all links to the configured R2 bucket",
+      "failed": "Backup failed",
       "success": "Backup successful",
-      "failed": "Backup failed"
+      "title": "Manual Backup"
     },
     "export": {
       "button": "Export All",

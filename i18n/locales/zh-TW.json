@@ -114,7 +114,8 @@
         "circle": "圓形",
         "description": "為短連結生成 QR Code",
         "square": "方形",
-        "title": "QR Code"
+        "title": "QR Code",
+        "background": "背景透明"
       },
       "realtime_analytics": {
         "description": "3D 地球視覺化和即時事件日誌",
@@ -179,7 +180,7 @@
     "delete_confirm_title": "確定要刪除嗎？",
     "delete_failed": "刪除失敗！",
     "delete_success": "刪除成功！",
-    "download_qr_code": "下載",
+    "download_qr_code": "下載QR Code",
     "edit": "編輯連結",
     "expires_at": "過期時間",
     "form": {
@@ -213,8 +214,8 @@
       "redirect_with_query_label": "攜帶查詢參數跳轉",
       "slug": "短連結",
       "slug_required": "請先輸入短連結",
-      "unsafe_label": "標記為不安全",
       "unsafe_description": "跳轉前顯示警告頁面，訪客需確認後才能繼續。",
+      "unsafe_label": "標記為不安全",
       "url": "連結地址"
     },
     "group_title": "連結列表",
@@ -251,12 +252,12 @@
   },
   "migrate": {
     "backup": {
-      "title": "手動備份",
-      "description": "手動觸發所有連結到已配置 R2 儲存桶的備份",
-      "button": "開始備份",
       "backing_up": "備份中...",
+      "button": "開始備份",
+      "description": "手動觸發所有連結到已配置 R2 儲存桶的備份",
+      "failed": "備份失敗",
       "success": "備份成功",
-      "failed": "備份失敗"
+      "title": "手動備份"
     },
     "export": {
       "button": "匯出全部",
