@@ -11,6 +11,7 @@ import {
   Link as LinkIcon,
   MousePointerClick,
   QrCode,
+  ShieldAlert,
   SquareChevronDown,
   SquarePen,
   Users,
@@ -77,6 +78,14 @@ function copyLink() {
               <div class="truncate leading-5 font-bold">
                 {{ link.slug }}
               </div>
+
+              <Badge
+                v-if="link.unsafe"
+                variant="destructive"
+                class="ml-1 shrink-0"
+              >
+                <ShieldAlert class="h-3 w-3" />
+              </Badge>
             </div>
           </div>
 

@@ -33,7 +33,8 @@ export default defineNuxtConfig({
     listQueryLimit: 500,
     disableBotAccessLog: false,
     disableAutoBackup: false,
-    notFoundRedirect: '/404page',
+    notFoundRedirect: '',
+    safeBrowsingDoh: '', // Set to DoH URL to enable auto-detection, e.g. https://family.cloudflare-dns.com/dns-query
     public: {
       previewMode: '',
       slugDefaultLength: '6',
@@ -116,7 +117,7 @@ export default defineNuxtConfig({
       redirectOn: 'root',
     },
     baseUrl: '/',
-    defaultLocale: 'en-US',
+    defaultLocale: 'zh-CN',
   },
   shadcn: {
     /**

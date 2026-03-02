@@ -213,6 +213,8 @@
       "redirect_with_query_label": "攜帶查詢參數跳轉",
       "slug": "短連結",
       "slug_required": "請先輸入短連結",
+      "unsafe_label": "標記為不安全",
+      "unsafe_description": "跳轉前顯示警告頁面，訪客需確認後才能繼續。",
       "url": "連結地址"
     },
     "group_title": "連結列表",
@@ -248,6 +250,14 @@
     "title": "登出？"
   },
   "migrate": {
+    "backup": {
+      "title": "手動備份",
+      "description": "手動觸發所有連結到已配置 R2 儲存桶的備份",
+      "button": "開始備份",
+      "backing_up": "備份中...",
+      "success": "備份成功",
+      "failed": "備份失敗"
+    },
     "export": {
       "button": "匯出全部",
       "description": "將所有連結下載為 JSON 檔案",

@@ -198,10 +198,6 @@
       "image_upload_hint": "Click or drag to upload image",
       "image_upload_success": "Image uploaded successfully",
       "link_settings": "Link Settings",
-      "more_options": "More Options",
-      "og_description": "Description",
-      "og_description_placeholder": "Link description",
-      "og_image": "Image",
       "og_settings": "OpenGraph Settings",
       "og_title": "Title",
       "og_title_placeholder": "Leave empty to use URL hostname",
@@ -213,6 +209,8 @@
       "redirect_with_query_label": "Redirect with Query Parameters",
       "slug": "Slug",
       "slug_required": "Please enter a slug first",
+      "unsafe_label": "Mark as Unsafe",
+      "unsafe_description": "Show a warning page before redirecting. Visitors must confirm to continue.",
       "url": "URL"
     },
     "group_title": "Links",
@@ -248,6 +246,14 @@
     "title": "LogOut?"
   },
   "migrate": {
+    "backup": {
+      "title": "Manual Backup",
+      "description": "Trigger a manual backup of all links to the configured R2 bucket",
+      "button": "Start Backup",
+      "backing_up": "Backing up...",
+      "success": "Backup successful",
+      "failed": "Backup failed"
+    },
     "export": {
       "button": "Export All",
       "description": "Download all your links as a JSON file",
