@@ -6,28 +6,43 @@ function buildMetaTags(link: Link, baseUrl: string) {
   const { host: hostname } = parseURL(link.url)
   const title = link.title || hostname || 'Link'
   const hasImage = !!link.image
-  const imageUrl = hasImage && link.image!.startsWith('/')
-    ? `${baseUrl}${link.image}`
-    : link.image
+  const imageUrl
+    = hasImage && link.image!.startsWith('/')
+      ? `${baseUrl}${link.image}`
+      : link.image
   const twitterCard = hasImage ? 'summary_large_image' : 'summary'
 
   const tags = [
-    link.description ? `<meta name="description" content="${escape(link.description)}">` : '',
+    link.description
+      ? `<meta name="description" content="${escape(link.description)}">`
+      : '',
     `<meta property="og:type" content="website">`,
     `<meta property="og:url" content="${escape(baseUrl)}/${escape(link.slug)}">`,
     `<meta property="og:title" content="${escape(title)}">`,
-    link.description ? `<meta property="og:description" content="${escape(link.description)}">` : '',
+    link.description
+      ? `<meta property="og:description" content="${escape(link.description)}">`
+      : '',
     hasImage ? `<meta property="og:image" content="${escape(imageUrl!)}">` : '',
     `<meta name="twitter:card" content="${twitterCard}">`,
     `<meta name="twitter:title" content="${escape(title)}">`,
-    link.description ? `<meta name="twitter:description" content="${escape(link.description)}">` : '',
-    hasImage ? `<meta name="twitter:image" content="${escape(imageUrl!)}">` : '',
-  ].filter(Boolean).join('\n    ')
+    link.description
+      ? `<meta name="twitter:description" content="${escape(link.description)}">`
+      : '',
+    hasImage
+      ? `<meta name="twitter:image" content="${escape(imageUrl!)}">`
+      : '',
+  ]
+    .filter(Boolean)
+    .join('\n    ')
 
   return { title, tags }
 }
 
-export function generateCloakingHtml(link: Link, targetUrl: string, baseUrl: string): string {
+export function generateCloakingHtml(
+  link: Link,
+  targetUrl: string,
+  baseUrl: string,
+): string {
   const { title, tags } = buildMetaTags(link, baseUrl)
 
   return `<!DOCTYPE html>
@@ -39,7 +54,7 @@ export function generateCloakingHtml(link: Link, targetUrl: string, baseUrl: str
     ${tags}
 </head>
 <body style="margin:0;overflow:hidden">
-    <iframe src="${escape(targetUrl)}" style="width:100vw;height:100vh;border:none" sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox" allowfullscreen referrerpolicy="no-referrer"></iframe>
+    <iframe src="${escape(targetUrl)}" allow="geolocation" style="width:100vw;height:100vh;border:none" sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox" allowfullscreen referrerpolicy="no-referrer"></iframe>
     <noscript><meta http-equiv="refresh" content="0;url=${escape(targetUrl)}"></noscript>
 </body>
 </html>`
@@ -50,7 +65,10 @@ interface PasswordHtmlOptions {
   locale?: RedirectLocale
 }
 
-export function generatePasswordHtml(slug: string, options: PasswordHtmlOptions = {}): string {
+export function generatePasswordHtml(
+  slug: string,
+  options: PasswordHtmlOptions = {},
+): string {
   const { hasError = false, locale = 'en' } = options
   const t = REDIRECT_TRANSLATIONS[locale]
   return `<!DOCTYPE html>
@@ -92,7 +110,11 @@ interface UnsafeWarningHtmlOptions {
   locale?: RedirectLocale
 }
 
-export function generateUnsafeWarningHtml(slug: string, targetUrl: string, options: UnsafeWarningHtmlOptions = {}): string {
+export function generateUnsafeWarningHtml(
+  slug: string,
+  targetUrl: string,
+  options: UnsafeWarningHtmlOptions = {},
+): string {
   const { password, locale = 'en' } = options
   const t = REDIRECT_TRANSLATIONS[locale]
   return `<!DOCTYPE html>
@@ -139,7 +161,11 @@ export function generateUnsafeWarningHtml(slug: string, targetUrl: string, optio
 </html>`
 }
 
-export function generateOgHtml(link: Link, targetUrl: string, baseUrl: string): string {
+export function generateOgHtml(
+  link: Link,
+  targetUrl: string,
+  baseUrl: string,
+): string {
   const { title, tags } = buildMetaTags(link, baseUrl)
 
   return `<!DOCTYPE html>
