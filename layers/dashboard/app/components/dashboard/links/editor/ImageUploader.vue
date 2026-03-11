@@ -98,10 +98,12 @@ function openFilePicker() {
       "
       :class="[
         !canUpload ? 'cursor-not-allowed opacity-50' : 'cursor-pointer',
-        dragOver ? 'border-primary bg-primary/5' : `
-          border-muted-foreground/25
-          hover:border-primary/50
-        `,
+        dragOver
+          ? 'border-primary bg-primary/5'
+          : `
+            border-muted-foreground/25
+            hover:border-primary/50
+          `,
       ]"
       @click="canUpload && openFilePicker()"
       @drop.prevent="onDrop"
@@ -111,13 +113,26 @@ function openFilePicker() {
       <div class="flex flex-col items-center gap-1 text-muted-foreground">
         <Loader2 v-if="uploading" class="h-8 w-8 animate-spin" />
         <ImagePlus v-else class="h-8 w-8" />
-        <span class="text-sm">{{ canUpload ? $t('links.form.image_upload_hint') : $t('links.form.slug_required') }}</span>
-        <span v-if="canUpload" class="text-xs opacity-60">{{ $t('links.form.image_ratio_hint') }}</span>
+        <span class="text-sm">{{
+          canUpload
+            ? $t('links.form.image_upload_hint')
+            : $t('links.form.slug_required')
+        }}</span>
+        <span v-if="canUpload" class="text-xs opacity-60">{{
+          $t('links.form.image_ratio_hint')
+        }}</span>
       </div>
-      <input
+      <!-- <input
         ref="fileInput"
         type="file"
         accept="image/jpeg,image/png,image/webp,image/gif"
+        class="hidden"
+        @change="onFileChange"
+      > -->
+      <input
+        ref="fileInput"
+        type="file"
+        accept="image/png"
         class="hidden"
         @change="onFileChange"
       >

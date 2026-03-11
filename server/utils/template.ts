@@ -32,7 +32,7 @@ function buildMetaTags(link: Link, baseUrl: string) {
       ? `<meta name="twitter:image" content="${escape(imageUrl!)}">`
       : '',
     hasImage
-      ? `<link rel="icon" type="image/png" sizes="32x32" href="${escape(imageUrl!)}">`
+      ? `<link rel="icon" type="image/png" href="${escape(imageUrl!)}">`
       : '',
   ]
     .filter(Boolean)
