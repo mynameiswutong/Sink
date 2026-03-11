@@ -31,6 +31,9 @@ function buildMetaTags(link: Link, baseUrl: string) {
     hasImage
       ? `<meta name="twitter:image" content="${escape(imageUrl!)}">`
       : '',
+    hasImage
+      ? `<link rel="icon" type="image/png" sizes="32x32" href="${escape(imageUrl!)}">`
+      : '',
   ]
     .filter(Boolean)
     .join('\n    ')
